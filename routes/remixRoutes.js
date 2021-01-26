@@ -38,17 +38,25 @@ remixRouter.get("/download", (req, res) => {
     });
 });
 
+
 remixRouter
   .route("/upload")
+  .get((req, res) => {
+    res.render("uploadfile.html");
+
+  })
+
+remixRouter
+  .route("/checkLoggedInUpload")
   .get((req, res) => {
     var userId = firebase.auth().currentUser.uid;
 if(userId)
    { 
-     res.render("uploadfile.html",{id:userId});
+     res.redirect("remix/upload");
     }
     else{
-      res.render("uploadfile.html",{error:"you need to be logged in"});
+      res.redirect("login.html");
     }
-  })
+  });
 
 module.exports = remixRouter;

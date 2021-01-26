@@ -19,8 +19,9 @@ const remix = require("./routes/remixRoutes.js")
 firebase.initializeApp(firebaseConfig);
 
 app.get("/", (req, res) => {
-  res.send("welcome to the landing page!");
+  res.sendFile(path.join(__dirname + "/public/index.html"));
 });
+
 app.use("/authentication", users);
 app.use("/remix", remix);
 

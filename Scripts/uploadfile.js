@@ -1,6 +1,12 @@
 
+async function isLoggedUpload() {
+  let response = await fetch(`http://localhost:8080/remix/checkLoggedInUpload`,{mode: 'cors'});
+  return await response.json();
+}
 
-function uploadFile() {
+async function uploadFile() {
+  let data = await isLoggedUpload();
+  console.log(data)
   console.log("UPLOAD-FILE called!");
   var storageReference = firebase.storage().ref();
   var file = document.getElementById("customFile").files[0];

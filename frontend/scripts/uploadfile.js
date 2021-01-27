@@ -1,20 +1,41 @@
+$(function () {
+  console.log("uploaded file is loaded");
+});
 
-async function uploadFile() {
+$("#uploadForm").submit(function (e) {
+  e.preventDefault();
 
-  console.log("UPLOAD-FILE called!");
-  var storageReference = firebase.storage().ref();
-  var file = document.getElementById("customFile").files[0];
+  async function formUpload() {
+    var file = document.getElementById("customFile").files[0];
 
-  storageReference
-    .child("remixes/" + file.name)
-    .put(file)
-    .then(result => {
-      console.log("Image uploaded!");
-      alert("File uploaded!");
-    })
-    .catch(error => {
-      console.log("Error ==== ", error);
-      alert("Something went wrong!");
-    });
-}
+    let object = {
+      title: $("#titleRemix").val(),
+      newFile: file,
+    };
+    let response = await fetch(
+      "https://web2-backend-chaimaeben.herokuapp.com/remix/upload",
+      {
+        method: "POST",
+        body: object,
+      }
+    )
+      .then((response) => response)
+      .then((result) => {
+        console.log("Success:", result);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
 
+    return await response;
+  }
+
+  window.onload = () => {
+    async function run() {
+      let data = await formUpload();
+      console.log(data);
+    }
+
+    run();
+  };
+});

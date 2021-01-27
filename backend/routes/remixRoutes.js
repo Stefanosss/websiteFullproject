@@ -68,6 +68,25 @@ remixRouter.route("/checkLoggedInUpload").get((req, res) => {
   }
 });
 
+remixRouter.route("/upload").post((req, res) => {
+  var db = firebase.firestore();
+  var storageReference = firebase.storage().ref();
+
+  storageReference
+    .child("remixes/" + newFile.name)
+    .put(newFile)
+    .then(result => {
+      console.log("Image uploaded!");
+      alert("File uploaded!");
+    })
+    .catch(error => {
+      console.log("Error ==== ", error);
+      alert("Something went wrong!");
+    });
+
+});
+
+
 remixRouter.get("/downloadById/:id", (req, res) => {
   //download sa marche
 

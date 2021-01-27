@@ -40,6 +40,12 @@ remixRouter.route("/saveUpload/:id").post((req, res) => {
     userId: firebase.auth().currentUser.uid,
     date:new Date()
   })
+  .then(function (doc) {
+    console.log(doc)
+  })
+  .catch(function (error) {
+    console.error("Error adding document: ", error);
+  });
 });
 
 remixRouter.route("/getAll").get((req, res) => {

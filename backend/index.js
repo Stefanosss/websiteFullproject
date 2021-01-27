@@ -15,6 +15,7 @@ app.use(cors());
 
 const users = require("./routes/UserRoutes.js");
 const remix = require("./routes/remixRoutes.js")
+const samples = require("./routes/sampleRoutes.js")
 
 firebase.initializeApp(firebaseConfig);
 
@@ -24,7 +25,7 @@ app.get("/", (req, res) => {
 
 app.use("/authentication", users);
 app.use("/remix", remix);
-
+app.use("/sample", samples);
 app.listen(port, () => {
   console.log(`listening at http://localhost:${port}`);
 });

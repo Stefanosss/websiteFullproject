@@ -8,7 +8,6 @@ require("firebase/storage");
 const http = require("https"); // or 'https' for https:// URLs
 const fs = require("fs");
 URL = require("url");
-const formidable = require('formidable')
 
 //random
 
@@ -16,35 +15,33 @@ const formidable = require('formidable')
 
 //newest
 
-//upload remix
-
-//download based on id
-
-remixRouter.get("/download", (req, res) => {
-  //download sa marche
-  var userId = firebase.auth().currentUser.uid;
-
-  const storageRef = firebase.storage().ref();
-
-  //get id from url
-  //get name query with id
-  storageRef
-    .child("samples/67536Y/schu_143_2.mid")
-    .getDownloadURL()
-    .then((url) => {
-      res.redirect(url);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-});
-
 
 remixRouter
-  .route("/upload")
+  .route("/checkLoggedInUpload")
   .get((req, res) => {
-    res.render("uploadfile.html");
+    var userId = firebase.auth().currentUser.uid;
+if(userId)
+   { 
+     res.send(userId);
+    }
+    else{
+      res.send("you need to be logged in to upload")
+    }
+  });
 
+
+  remixRouter
+  .route("/getRemixById")
+  .get((req, res) => {
+    //get the detail information of the remix by remix id
+    console.log('id here: '+  req.query.id);
+    const cityRef = db.collection('remixes').doc(req.query.id);
+    const doc = await cityRef.get();
+    if (!doc.exists) {
+      console.log('No such document!');
+    } else {
+      res.send(doc.data())
+    }
   })
 
 remixRouter

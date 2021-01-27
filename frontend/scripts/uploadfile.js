@@ -30,10 +30,14 @@ $("#uploadForm").submit(function (e) {
         alert("Something went wrong!");
       });
 
-      let data = await formUpload(uid);
-      console.log(data);
-
+      
+      startLoad(uid);
 });
+
+async function startLoad(uid){
+  let data = await formUpload(uid);
+  console.log(data);
+}
 
 
 async function formUpload(id) {

@@ -13,6 +13,8 @@ $("#uploadForm").submit(function (e) {
   console.log('form was submitted')
   e.preventDefault();
   var uid =uuidv4();
+  
+  $('input[name="uid"]').val(uid);
 
     console.log("UPLOAD-FILE called!");
     var storageReference = firebase.storage().ref();
@@ -30,7 +32,6 @@ $("#uploadForm").submit(function (e) {
         alert("Something went wrong!");
       });
 
-      $('input[name="uid"]').val(uid);
 
 
 

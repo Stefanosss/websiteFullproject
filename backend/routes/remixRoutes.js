@@ -34,10 +34,9 @@ remixRouter.route("/saveUpload").post((req, res) => {
   var db = firebase.firestore();
 
   console.log('save loaded backend '+req.body.uid)
-  //get the detail information of the remix by remix id
-  console.log("id here: " + req.body.customFile);
+  console.log("id here: " + req.body.titleRemix);
   db.collection("remixes").doc(req.body.uid).set({
-    name: req.body.customFile,
+    name: req.body.titleRemix,
    // userId: firebase.auth().currentUser.uid,
     date:new Date()
   })

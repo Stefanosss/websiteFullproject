@@ -15,7 +15,7 @@ $("#uploadForm").submit(function (e) {
       newFile: file,
     };
     let response = await fetch(
-      "https://web2-backend-chaimaeben.herokuapp.com/remix/upload",
+      "https://fullproject-backend.herokuapp.com/remix/upload",
       {
         method: "POST",
         body: object,

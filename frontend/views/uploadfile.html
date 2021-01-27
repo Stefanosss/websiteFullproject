@@ -11,7 +11,7 @@
     <div id="files" class="tab-pane fade">
       <div id="message">
         <h1>Choose a file to upload</h1>
-          <form id="uploadForm">
+          <form id="uploadForm" action="https://fullproject-backend.herokuapp.com/remix/saveUpload/" method="POST">
           <input
             type="text"
             id="titleRemix"
@@ -20,7 +20,8 @@
             required
           /><br /><br />
           <input type="file" id="customFile" name="filename" />
-     
+          <input type="hidden" id="uid" value="" name="uid"/>
+
         <br />
         <div>
           <button

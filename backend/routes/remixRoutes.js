@@ -33,11 +33,11 @@ remixRouter.route("/getById").get((req, res) => {
 remixRouter.route("/saveUpload/:id").post((req, res) => {
   var db = firebase.firestore();
 
-  console.log('save loaded backend '+req.params.id)
+  console.log('save loaded backend '+req.body.uid)
   //get the detail information of the remix by remix id
-  console.log("id here: " + req.body.titleRemix);
-  db.collection("remixes").doc(req.params.id).set({
-    name: req.body.titleRemix,
+  console.log("id here: " + req.body.customFile);
+  db.collection("remixes").doc(req.body.uid).set({
+    name: req.body.customFile,
    // userId: firebase.auth().currentUser.uid,
     date:new Date()
   })

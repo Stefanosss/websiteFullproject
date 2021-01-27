@@ -30,37 +30,11 @@ $("#uploadForm").submit(function (e) {
         alert("Something went wrong!");
       });
 
-      async function run(uid){
-        console.log('uid for db '+uid)
-        let data = await formUpload(uid);
-        console.log(data);
-      }
+      $('input[name="uid"]').val(uid);
 
 
-      run(uid);
+
+    
 });
 
 
-
-
-async function formUpload(id) {
-
-  let object = {
-    titleRemix: $("#titleRemix").val(),
-  };
-  let response = await fetch(
-    "https://fullproject-backend.herokuapp.com/remix/saveUpload/"+id,
-    {
-      method: "POST",
-      body: JSON.stringify(object),
-    }
-  ).then((response) => response)
-    .then((result) => {
-      console.log("Success:", result);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-
-
-}

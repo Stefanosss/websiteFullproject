@@ -39,7 +39,7 @@ URL = require("url");
   .route("/getAll")
   .get((req, res) => {
     //get the detail information of the remix by remix id
-    const ref = await firebase.firestore().collection('remixes').get()
+    const ref = firebase.firestore().collection('remixes').get()
   
     ref.then((querySnapshot) => {
       const data = []

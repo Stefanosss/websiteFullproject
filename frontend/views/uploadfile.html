@@ -1,55 +1,62 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Welcome</title>
-    
 
     <!-- Styles -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
   </head>
   <body>
-    
     <div id="files" class="tab-pane fade">
-        <div id="message">
-          <h2>Files</h2>
-          <h1>Choose a file to upload</h1>
-          <div class="custom-file mb-3">
-            <input type="file" class="custom-file-input" id="customFile" name="filename">
-          </div>
-
-          <br>
-          <div>
-              <button type="button" class="btn btn-default" onclick="uploadFile(document.getElementById('customFile').value)">Upload </button>
-             
-            </div>
-          <br>
+      <div id="message">
+        <h1>Choose a file to upload</h1>
+      
+          <form method="POST" action="https://fullproject-backend.herokuapp.com/remix/saveUpload">
+          <input
+            type="text"
+            id="titleRemix"
+            name="titleRemix"
+            placeholder="Enter title of remix"
+            required
+          /><br /><br />
+          <input type="file" id="customFile" name="filename" /> <br />
+        <div>
+          <button
+            type="submit"
+            onclick="uploadFile(document.getElementById('customFile').value)"
+          >
+            Upload
+          </button>
         </div>
+
+      </form>
+        <br />
       </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
 
-<script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-storage.js"></script>
+    <script>
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyBjztYt_eXCDoRgPcip2xU2IVtSV8yg95w",
+        authDomain: "fullproject-2e12b.firebaseapp.com",
+        databaseURL:
+          "https://fullproject-2e12b-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "fullproject-2e12b",
+        storageBucket: "fullproject-2e12b.appspot.com",
+        messagingSenderId: "183388416082",
+        appId: "1:183388416082:web:96fd5abf9b3f53038c178b",
+        measurementId: "G-6643M0KBBJ",
+      };
 
-<script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-storage.js"></script>
-<script>
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-  apiKey: "AIzaSyBjztYt_eXCDoRgPcip2xU2IVtSV8yg95w",
-  authDomain: "fullproject-2e12b.firebaseapp.com",
-  databaseURL: "https://fullproject-2e12b-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "fullproject-2e12b",
-  storageBucket: "fullproject-2e12b.appspot.com",
-  messagingSenderId: "183388416082",
-  appId: "1:183388416082:web:96fd5abf9b3f53038c178b",
-  measurementId: "G-6643M0KBBJ"
-};
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
 
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-</script>
-
-<script src="./../Scripts/uploadfile.js"></script>
-</body>
+    <script src="./../Scripts/uploadfile.js"></script>
+  </body>
 </html>

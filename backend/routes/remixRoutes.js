@@ -30,6 +30,18 @@ remixRouter.route("/getById").get((req, res) => {
   });
 });
 
+remixRouter.route("/saveUpload").post((req, res) => {
+  var db = firebase.firestore();
+
+  //get the detail information of the remix by remix id
+  console.log("id here: " + req.body.titleRemix);
+  db.collection("remixes").doc().set({
+    name: req.body.titleRemix,
+    userId: firebase.auth().currentUser.uid,
+    date:new Date()
+  })
+});
+
 remixRouter.route("/getAll").get((req, res) => {
   //get the detail information of the remix by remix id
   const ref = firebase.firestore().collection("remixes").get();

@@ -1,15 +1,4 @@
 
-async function isLoggedUpload() {
-  let response = await fetch(`https://fullproject-backend.herokuapp.com/remix/checkLoggedInUpload`,{mode: 'cors'});
-  return await response.json();
-}
-
-window.onload = (event) => {
-  let data = await isLoggedUpload();
-  console.log(data)
-
-};
-
 async function uploadFile() {
 
   console.log("UPLOAD-FILE called!");

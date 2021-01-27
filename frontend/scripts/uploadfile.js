@@ -55,7 +55,7 @@ async function formUpload(id) {
     .then((response) => response)
     .then((result) => {
       console.log("Success:", result);
-      return await response;
+      return result;
 
     })
     .catch((error) => {

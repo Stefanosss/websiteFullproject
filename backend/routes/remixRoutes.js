@@ -16,22 +16,8 @@ URL = require("url");
 //newest
 
 
-remixRouter
-  .route("/checkLoggedInUpload")
-  .get((req, res) => {
-    var userId = firebase.auth().currentUser.uid;
-if(userId)
-   { 
-     res.send(userId);
-    }
-    else{
-      res.send("you need to be logged in to upload")
-    }
-  });
-
-
   remixRouter
-  .route("/getRemixById")
+  .route("/getById")
   .get((req, res) => {
     //get the detail information of the remix by remix id
     console.log('id here: '+  req.query.id);
@@ -50,7 +36,7 @@ if(userId)
   })
 
   remixRouter
-  .route("/getAllRemixes")
+  .route("/getAll")
   .get((req, res) => {
     //get the detail information of the remix by remix id
     const ref = await firebase.firestore().collection('remixes').get()

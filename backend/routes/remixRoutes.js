@@ -37,7 +37,7 @@ remixRouter.route("/saveUpload/:id").post((req, res) => {
   console.log("id here: " + req.body.titleRemix);
   db.collection("remixes").doc(req.params.id).set({
     name: req.body.titleRemix,
-    userId: firebase.auth().currentUser.uid,
+   // userId: firebase.auth().currentUser.uid,
     date:new Date()
   })
   .then(function (doc) {

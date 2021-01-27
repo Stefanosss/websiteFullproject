@@ -52,9 +52,9 @@ async function formUpload(id) {
     "https://fullproject-backend.herokuapp.com/remix/saveUpload/"+id,
     {
       method: "POST",
-      body: object,
+      body: JSON.stringify(object),
     }
-  ).then((response) => response.json())
+  ).then((response) => response)
     .then((result) => {
       console.log("Success:", result);
     })

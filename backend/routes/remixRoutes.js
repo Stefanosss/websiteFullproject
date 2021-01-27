@@ -30,12 +30,12 @@ remixRouter.route("/getById").get((req, res) => {
   });
 });
 
-remixRouter.route("/saveUpload").post((req, res) => {
+remixRouter.route("/saveUpload/:id").post((req, res) => {
   var db = firebase.firestore();
 
   //get the detail information of the remix by remix id
   console.log("id here: " + req.body.titleRemix);
-  db.collection("remixes").doc().set({
+  db.collection("remixes").doc(req.params.id).set({
     name: req.body.titleRemix,
     userId: firebase.auth().currentUser.uid,
     date:new Date()
@@ -74,17 +74,6 @@ remixRouter.route("/upload").post((req, res) => {
 
   console.log("titleremix : "+req.body.titleRemix)
   console.log("file itself: "+req.body.newFile)
-  storageReference
-    .child("remixes/" + req.body.titleRemix)
-    .put(req.body.newFile)
-    .then(result => {
-      console.log("Image uploaded!");
-      alert("File uploaded!");
-    })
-    .catch(error => {
-      console.log("Error ==== ", error);
-      alert("Something went wrong!");
-    });
 
 });
 

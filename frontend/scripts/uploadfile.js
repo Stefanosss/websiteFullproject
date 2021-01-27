@@ -12,14 +12,14 @@ $("#uploadForm").submit(function (e) {
 
   console.log('form was submitted')
   e.preventDefault();
-  console.log(uuidv4());
+  var uid =uuidv4();
 
     console.log("UPLOAD-FILE called!");
     var storageReference = firebase.storage().ref();
     var file = document.getElementById("customFile").files[0];
   
     storageReference
-      .child("remixes/audio_file/" + file.name)
+      .child(`remixes/${uid}/`+ file.name)
       .put(file)
       .then(result => {
         console.log("Image uploaded!");
@@ -29,7 +29,32 @@ $("#uploadForm").submit(function (e) {
         console.log("Error ==== ", error);
         alert("Something went wrong!");
       });
-  
-  
+
+      let data = await formUpload(uid);
+      console.log(data);
 
 });
+
+
+async function formUpload(id) {
+
+  let object = {
+    titleRemix: $("#titleRemix").val(),
+  };
+  let response = await fetch(
+    "https://fullproject-backend.herokuapp.com/remix/upload/"+id,
+    {
+      method: "POST",
+      body: object,
+    }
+  )
+    .then((response) => response)
+    .then((result) => {
+      console.log("Success:", result);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+
+  return await response;
+}

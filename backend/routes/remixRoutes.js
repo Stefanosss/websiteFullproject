@@ -72,9 +72,11 @@ remixRouter.route("/upload").post((req, res) => {
   var db = firebase.firestore();
   var storageReference = firebase.storage().ref();
 
+  console.log("titleremix : "+req.body.titleRemix)
+  console.log("file itself: "+req.body.newFile)
   storageReference
-    .child("remixes/" + newFile.name)
-    .put(newFile)
+    .child("remixes/" + req.body.titleRemix)
+    .put(req.body.newFile)
     .then(result => {
       console.log("Image uploaded!");
       alert("File uploaded!");

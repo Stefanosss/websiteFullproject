@@ -30,14 +30,17 @@ $("#uploadForm").submit(function (e) {
         alert("Something went wrong!");
       });
 
-      
-      startLoad(uid);
+      async function run(uid){
+        console.log('uid for db '+uid)
+        let data = await formUpload(uid);
+        console.log(data);
+      }
+
+
+      run(uid);
 });
 
-async function startLoad(uid){
-  let data = await formUpload(uid);
-  console.log(data);
-}
+
 
 
 async function formUpload(id) {
@@ -51,15 +54,13 @@ async function formUpload(id) {
       method: "POST",
       body: object,
     }
-  )
-    .then((response) => response)
+  ).then((response) => response.json())
     .then((result) => {
       console.log("Success:", result);
-      return result;
-
     })
     .catch((error) => {
       console.error("Error:", error);
     });
+
 
 }

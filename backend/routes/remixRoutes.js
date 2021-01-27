@@ -56,7 +56,7 @@ remixRouter.route("/checkLoggedInUpload").get((req, res) => {
   }
 });
 
-sampleRouter.get("/downloadById/:id", (req, res) => {
+remixRouter.get("/downloadById/:id", (req, res) => {
   //download sa marche
 
   const storageRef = firebase.storage().ref();

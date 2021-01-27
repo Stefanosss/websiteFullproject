@@ -4,9 +4,14 @@ async function isLoggedUpload() {
   return await response.json();
 }
 
-async function uploadFile() {
-   let data = await isLoggedUpload();
+window.onload = (event) => {
+  let data = await isLoggedUpload();
   console.log(data)
+
+};
+
+async function uploadFile() {
+
   console.log("UPLOAD-FILE called!");
   var storageReference = firebase.storage().ref();
   var file = document.getElementById("customFile").files[0];

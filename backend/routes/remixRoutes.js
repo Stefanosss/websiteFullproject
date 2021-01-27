@@ -49,7 +49,24 @@ if(userId)
  
   })
 
+  remixRouter
+  .route("/getAllRemixes")
+  .get((req, res) => {
+    //get the detail information of the remix by remix id
+    const ref = await firebase.firestore().collection('remixes').get()
   
+    ref.then((querySnapshot) => {
+      const data = []
+      querySnapshot.forEach((doc) => {
+         data.push({ id: doc.id, ...doc.data() })
+
+      })
+      res.send(data)
+   }) .catch(function (error) {
+            console.error("Error displaying documents: ", error);
+          });
+
+  })
 
 remixRouter
   .route("/checkLoggedInUpload")

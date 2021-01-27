@@ -3,6 +3,8 @@ $(function () {
 });
 
 $("#uploadForm").submit(function (e) {
+
+  console.log('form was submitted')
   e.preventDefault();
 
   async function formUpload() {

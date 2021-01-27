@@ -68,7 +68,7 @@ remixRouter.get("/downloadById/:id", (req, res) => {
 
   ref.then(function (doc) {
     if (doc.exists) {
-      console.log("Document data:", doc.data());
+      console.log("Document data:", doc.data().name);
       res.send(doc.data());
     } else {
       console.log("No such document!");

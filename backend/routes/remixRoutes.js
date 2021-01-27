@@ -69,7 +69,15 @@ remixRouter.get("/downloadById/:id", (req, res) => {
   ref.then(function (doc) {
     if (doc.exists) {
       console.log("Document data:", doc.data().name);
-      res.send(doc.data());
+      storageRef
+      .child(`remixes/${req.params.id}/${doc.data().name}`)
+      .getDownloadURL()
+      .then((url) => {
+        res.redirect(url);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     } else {
       console.log("No such document!");
     }

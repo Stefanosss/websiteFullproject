@@ -7,37 +7,22 @@ $("#uploadForm").submit(function (e) {
   console.log('form was submitted')
   e.preventDefault();
 
-  async function formUpload() {
+    console.log("UPLOAD-FILE called!");
+    var storageReference = firebase.storage().ref();
     var file = document.getElementById("customFile").files[0];
-   console.log(file)
-    let object = {
-      title: $("#titleRemix").val(),
-      newFile: file,
-    };
-    let response = await fetch(
-      "https://fullproject-backend.herokuapp.com/remix/upload",
-      {
-        method: "POST",
-        body: object,
-      }
-    )
-      .then((response) => response)
-      .then((result) => {
-        console.log("Success:", result);
+  
+    storageReference
+      .child("remixes/audio_file/" + file.name)
+      .put(file)
+      .then(result => {
+        console.log("Image uploaded!");
+        alert("File uploaded!");
       })
-      .catch((error) => {
-        console.error("Error:", error);
+      .catch(error => {
+        console.log("Error ==== ", error);
+        alert("Something went wrong!");
       });
+  
+  
 
-    return await response;
-  }
-
-  window.onload = () => {
-    async function run() {
-      let data = await formUpload();
-      console.log(data);
-    }
-
-    run();
-  };
 });

@@ -30,7 +30,7 @@ remixRouter.route("/getById").get((req, res) => {
   });
 });
 
-remixRouter.route("/saveUpload/:id").post((req, res) => {
+remixRouter.route("/saveUpload").post((req, res) => {
   var db = firebase.firestore();
 
   console.log('save loaded backend '+req.body.uid)

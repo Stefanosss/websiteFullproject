@@ -46,7 +46,7 @@ async function formUpload(id) {
     titleRemix: $("#titleRemix").val(),
   };
   let response = await fetch(
-    "https://fullproject-backend.herokuapp.com/remix/upload/"+id,
+    "https://fullproject-backend.herokuapp.com/remix/saveUpload/"+id,
     {
       method: "POST",
       body: object,

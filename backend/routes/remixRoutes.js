@@ -35,13 +35,18 @@ if(userId)
   .get((req, res) => {
     //get the detail information of the remix by remix id
     console.log('id here: '+  req.query.id);
-    const cityRef = db.collection('remixes').doc(req.query.id);
-    const doc = await cityRef.get();
-    if (!doc.exists) {
-      console.log('No such document!');
-    } else {
+    var ref = firebase.firestore().collection("remixes").doc(req.query.id).get();
+
+    ref
+    .then(function (doc) {
+      if (doc.exists) {
+        console.log("Document data:", doc.data());
       res.send(doc.data())
-    }
+      } else {
+        console.log("No such document!");
+      }
+    })
+ 
   })
 
 remixRouter

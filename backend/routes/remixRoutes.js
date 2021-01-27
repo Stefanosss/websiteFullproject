@@ -22,6 +22,7 @@ const formidable = require('formidable')
 
 remixRouter.get("/download", (req, res) => {
   //download sa marche
+  var userId = firebase.auth().currentUser.uid;
 
   const storageRef = firebase.storage().ref();
 
@@ -52,10 +53,10 @@ remixRouter
     var userId = firebase.auth().currentUser.uid;
 if(userId)
    { 
-     res.redirect("remix/upload");
+     res.send(userId);
     }
     else{
-      res.redirect("login.html");
+      res.send("you need to be logged in to upload")
     }
   });
 

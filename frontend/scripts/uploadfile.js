@@ -7,7 +7,7 @@ $("#uploadForm").submit(function (e) {
 
   async function formUpload() {
     var file = document.getElementById("customFile").files[0];
-
+   console.log(file)
     let object = {
       title: $("#titleRemix").val(),
       newFile: file,

@@ -21,7 +21,7 @@ const comment = require("./routes/commentRoutes.js")
 firebase.initializeApp(firebaseConfig);
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname + "/public/index.html"));
+  res.render("welcome.html")
 });
 
 app.use("/authentication", users);

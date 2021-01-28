@@ -55,7 +55,7 @@ userRouter
         // Signed in
         var user = userCredential.user;
        console.log("successfully logged in " + JSON.stringify(user));
-        res.redirect("https://fullproject-frontend.herokuapp.com/views/login.html?id="+user.uid);
+        res.redirect("https://fullproject-frontend.herokuapp.com/views/home.html?id="+user.uid);
       })
       .catch((error) => {
         var errorCode = error.code;

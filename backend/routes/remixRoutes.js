@@ -39,6 +39,7 @@ remixRouter.route("/saveUpload").post((req, res) => {
   console.log("id here: " + req.body.name);
   firebase.firestore().collection("remixes").doc(req.body.uid).set({
     name: req.body.name,
+    userId:user,
     date:new Date()
   })
   .then(function (doc) {

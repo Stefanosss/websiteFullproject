@@ -55,6 +55,7 @@ window.onload = () => {
   url = url.replace("?id=", "");
   console.log(url);
 
+  async function runAll(url){
   if (url) {
     const [user] = await Promise.all([
       getUserInfo(url),
@@ -74,10 +75,11 @@ window.onload = () => {
     <a href="https://fullproject-frontend.herokuapp.com/views/home.html" class="user-nav__link">Home</a>
     <a href="sampleGenerator.html" class="user-nav__link">Generate sample</a>
     <div class="user-nav__user">
-        <a href="https://fullproject-frontend.herokuapp.com/views/login.html" class="user-nav__user-name">Login</a>
+        <a href="https://fullproject-frontend.herokuapp.com/views/login.html" class="user-nav__user-name">Login</a> <span></span>
         <a  href="https://fullproject-frontend.herokuapp.com/views/signup.html" class="user-nav__user-name">Sign up</a>
 
     </div>`)
   }
-
+}
+runAll();
   }

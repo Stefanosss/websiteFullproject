@@ -64,6 +64,20 @@ userRouter
   });
 
 
+  userRouter.route("/getById/:id").get((req, res) => {
+    //get the detail information of the remix by remix id
+    var ref = firebase.firestore().collection("users").doc(req.params.id).get();
+  
+    ref.then(function (doc) {
+      if (doc.exists) {
+        console.log("Document data:", doc.data());
+        res.send(doc.data());
+      } else {
+        console.log("No such document!");
+      }
+    });
+  });
+
   userRouter.get("/profile", (req, res) => {
 
   var userId = firebase.auth().currentUser.uid;
@@ -77,7 +91,7 @@ userRouter
         if (doc.exists) {
           console.log("Document data:", doc.data());
 
-          res.render('https://fullproject-frontend.herokuapp.com/views/profile.html', doc.data())
+          res.redirect('https://fullproject-frontend.herokuapp.com/views/profile.html?userId='+userId)
         } else {
           console.log("No such document!");
         }
@@ -107,7 +121,7 @@ userRouter.get("/Logout", (req, res) => {
 userRouter
   .route("/forgotPassword")
   .get((req, res) => {
-    res.render("forgotpassword.html");
+    res.redirect("https://fullproject-frontend.herokuapp.com/views/forgotpassword.html");
   })
   .post((req, res) => {
     console.log("entered forgotten abyss");

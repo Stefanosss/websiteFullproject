@@ -24,6 +24,11 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname + "/public/index.html"));
 });
 
+app.get("/home", (req, res) => {
+  res.render("home.html")
+});
+
+
 app.use("/authentication", users);
 app.use("/remix", remix);
 app.use("/sample", samples);

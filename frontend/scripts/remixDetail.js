@@ -3,6 +3,7 @@ async function getComments(id) {
       "https://fullproject-backend.herokuapp.com/comment/getAllById?id="+id,
       { mode: "cors" }
     );
+    console.log(response.json())
     return await response.json();
   }
 
@@ -29,7 +30,7 @@ async function getComments(id) {
 
     ]);
 
-    for (let i = 0; i < 7; i++) 
+    for (let i = 0; i < comments.length; i++) 
 
         $(".comments").append(`
         <div class="comments__list">

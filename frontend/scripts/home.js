@@ -7,15 +7,17 @@ async function getAllFunc() {
 }
 
 
+
+
 window.onload = () => {
 
-  async function run() {
+  async function run(url) {
 
     const [getAll] = await Promise.all([
       getAllFunc(),
     ]);
 
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < getAll.length; i++) {
       $(".trending__list").append(`
           <div class="trending__list-item">
           

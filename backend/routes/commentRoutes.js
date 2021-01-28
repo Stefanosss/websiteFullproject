@@ -35,7 +35,8 @@ commentRouter.route("/getAllById").get((req, res) => {
   commentRouter.route("/Add").post((req, res) => {
  let user = firebase.auth().currentUser.uid;
  if(user){
-    firebase.firestore().collection("remixes").doc().set({
+    firebase.firestore().collection("comments").doc().set({
+      remixId:req.body.remixId,
       comment: req.body.comment,
      userId: user,
       date:new Date()
@@ -47,6 +48,7 @@ commentRouter.route("/getAllById").get((req, res) => {
     .catch(function (error) {
       console.error("Error adding document: ", error);
     });
+     res.redirect("http://127.0.0.1:5500/frontend/views/remixDetail.html?remixId="+req.body.remixId)
   }else{
     res.redirect('https://fullproject-frontend.herokuapp.com/views/login.html')
   }

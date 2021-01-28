@@ -22,13 +22,13 @@ async function getComments(id) {
   console.log("href " + window.location.search);
   var url = window.location.search;
   url = url.replace("?remixId=", "");
+  $('input[name="remixId"]').val(url);
 
   async function detailRun(url) {
     const [comments] = await Promise.all([
         getComments(url),
 
     ]);
-
     for (let i = 0; i < comments.length; i++) 
         $(".comments").append(`
         <div class="comments__list">

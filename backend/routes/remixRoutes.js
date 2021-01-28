@@ -31,11 +31,15 @@ remixRouter.route("/getById").get((req, res) => {
 });
 
 remixRouter.route("/saveUpload").post((req, res) => {
+
+  var user =  firebase.auth().currentUser.uid;
+
+  if(user){
   console.log('save loaded backend '+req.body.uid)
   console.log("id here: " + req.body.name);
   firebase.firestore().collection("remixes").doc(req.body.uid).set({
     name: req.body.name,
-   // userId: firebase.auth().currentUser.uid,
+    userId: user,
     date:new Date()
   })
   .then(function (doc) {
@@ -45,7 +49,10 @@ remixRouter.route("/saveUpload").post((req, res) => {
   .catch(function (error) {
     console.error("Error adding document: ", error);
   });
-  res.send(req.body)
+  res.send(req.body)}
+  else{
+    res.send("you need to be logged in")
+  }
 });
 
 remixRouter.route("/getAll").get((req, res) => {

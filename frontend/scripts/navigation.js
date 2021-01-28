@@ -19,12 +19,9 @@ window.onload = () => {
 
   async function runAll(url){
   if (url) {
-    const [user] = await Promise.all([
-      getUserInfo(url),
- 
-    ]);
+    const user= await getUserInfo(url);
    
-     console.log(user);
+     console.log("a user "+user);
     $(".user-nav").append(`
     <a href="https://fullproject-frontend.herokuapp.com/views/home.html" class="user-nav__link">Home</a>
     <a href="sampleGenerator.html" class="user-nav__link">Generate sample</a>
@@ -45,4 +42,6 @@ window.onload = () => {
   }
 }
 runAll();
+
+
   }

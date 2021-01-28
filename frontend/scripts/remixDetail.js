@@ -43,10 +43,11 @@ async function getComments(id) {
 
           `);
       }
+      detailRun(url);
 }
 
-detailRun(url);
 
 
 
-  }
+
+  

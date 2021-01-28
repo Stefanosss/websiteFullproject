@@ -33,10 +33,11 @@ commentRouter.route("/getAllById").get((req, res) => {
 
 
   commentRouter.route("/Add").post((req, res) => {
-
+ let user = firebase.auth().currentUser.uid;
+ if(user){
     firebase.firestore().collection("remixes").doc().set({
       comment: req.body.comment,
-     // userId: firebase.auth().currentUser.uid,
+     userId: user,
       date:new Date()
     })
     .then(function (doc) {
@@ -46,6 +47,9 @@ commentRouter.route("/getAllById").get((req, res) => {
     .catch(function (error) {
       console.error("Error adding document: ", error);
     });
+  }else{
+    res.redirect('https://fullproject-frontend.herokuapp.com/views/login.html')
+  }
   });
   
 

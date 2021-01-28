@@ -7,7 +7,6 @@ async function getComments(id) {
     .then(myJson=> console.log(myJson)
     
     )
-    console.log(response.json())
     return await response.json();
   }
 

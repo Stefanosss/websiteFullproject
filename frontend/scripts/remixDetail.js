@@ -1,11 +1,15 @@
 async function getComments(id) {
-  let response = await fetch(
-    "https://fullproject-backend.herokuapp.com/comment/getAllById?id="+id,
-    { mode: "cors" }
-  );
-  console.log(response.json())
-  return await response.json();
-}
+    let response = await fetch(
+      "https://fullproject-backend.herokuapp.com/comment/getAllById?id="+id,
+      { mode: "cors" }
+    ) 
+    .then(response=> response.json())
+    .then(myJson=> console.log(myJson)
+    
+    )
+    console.log(response.json())
+    return await response.json();
+  }
 
   async function getUserInfo(id) {
     let response = await fetch(
@@ -31,7 +35,7 @@ async function getComments(id) {
     ]);
 
     for (let i = 0; i < comments.length; i++) 
-    console.log(JSON.stringify(comments[i].date))
+           console.log(comments[i].date)
         $(".comments").append(`
         <div class="comments__list">
         <img src="../img/userPicture.jpg" alt="user picture" class="comments__list-image">

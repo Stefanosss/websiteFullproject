@@ -6,7 +6,7 @@ var firebase = require("firebase");
 userRouter
   .route("/signup")
   .get((req, res) => {
-    res.render("signup.html");
+    res.redirect("https://fullproject-frontend.herokuapp.com/views/signup.html");
   })
   .post((req, res) => {
     var db = firebase.firestore();
@@ -44,7 +44,7 @@ userRouter
 userRouter
   .route("/login")
   .get((req, res) => {
-    res.render("login.html");
+    res.redirect("https://fullproject-frontend.herokuapp.com/views/login.html");
   })
   .post((req, res) => {
     console.log("entered sign in");
@@ -55,7 +55,7 @@ userRouter
         // Signed in
         var user = userCredential.user;
        // console.log("successfully logged in " + JSON.stringify(user));
-        res.redirect("/authentication/profile");
+        res.redirect("https://fullproject-backend.herokuapp.com/authentication/profile");
       })
       .catch((error) => {
         var errorCode = error.code;
@@ -77,7 +77,7 @@ userRouter
         if (doc.exists) {
           console.log("Document data:", doc.data());
 
-          res.render('profile.html', doc.data())
+          res.render('https://fullproject-frontend.herokuapp.com/views/profile.html', doc.data())
         } else {
           console.log("No such document!");
         }

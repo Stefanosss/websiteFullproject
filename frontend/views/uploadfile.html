@@ -9,22 +9,20 @@
   </head>
   <body>
     <div id="files">
-      <div id="message">
         <h1>Choose a file to upload</h1>
-          <form id="uploadForm" action="http://localhost:8080/remix/saveUpload" method="POST">
+          <form id="uploadForm" action="http://localhost:8080/remix/saveUpload" method="POST" enctype='multipart/form-data'>
           <input
             type="text"
             id="titleRemix"
             name="titleRemix"
             placeholder="Enter title of remix"
-            required
           /><br /><br />
           <input type="file" id="customFile" name="filename" />
           <input type="hidden" id="uid" value="" name="uid"/>
 
         <br />
-        <div>
-          <button type="submit">Upload </button>
+      
+          <button type="submit" value="submit">Upload </button>
         </form>
           
         </div>

@@ -29,8 +29,11 @@ $("#uploadForm").submit(function (e) {
   var storageReference = firebase.storage().ref();
   var file = document.getElementById("customFile").files[0];
   var id =$('input[name="uid"]').val();
+   console.log(file.name)
+
+
   storageReference
-    .child(`remixes/${id}/` + title)
+    .child(`remixes/${id}/` + title+'.mid')
     .put(file)
     .then((result) => {
       console.log("Image uploaded!");

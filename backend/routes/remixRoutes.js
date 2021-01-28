@@ -41,7 +41,7 @@ remixRouter.route("/saveUpload").post((req, res) => {
     name: req.body.name,
     userId:user,
     date:new Date()
-  })
+  }, { merge: true })
   .then(function (doc) {
     console.log(doc)
     res.send(doc)

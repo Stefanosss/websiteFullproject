@@ -10,14 +10,14 @@ async function getAllFunc() {
 
 
 window.onload = () => {
-
-  async function run(url) {
+console.log('here you go')
+  async function run() {
 
     const [getAll] = await Promise.all([
       getAllFunc(),
     ]);
 
-    for (let i = 0; i < getAll.length; i++) {
+    for (let i = 0; i < 7; i++) {
       $(".trending__list").append(`
           <div class="trending__list-item">
           

@@ -39,7 +39,7 @@ commentRouter.route("/getAllById").get((req, res) => {
       comment: req.body.comment,
      userId: user,
       date:new Date()
-    })
+    }, { merge: true })
     .then(function (doc) {
       console.log(doc)
       res.send(doc)

@@ -51,7 +51,7 @@ remixRouter.route("/saveUpload").post((req, res) => {
   });
   res.send(req.body)}
   else{
-    res.send("you need to be logged in")
+    res.redirect('https://fullproject-frontend.herokuapp.com/views/login.html')
   }
 });
 

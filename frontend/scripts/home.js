@@ -23,7 +23,7 @@ window.onload = () => {
           $(".trending__list").append(`
           <div class="trending__list-item">
           
-             <a href="https://fullproject-frontend.herokuapp.com//views/remixDetail.html?remixId=${getAll[i].id }">
+             <a href="https://fullproject-frontend.herokuapp.com/views/remixDetail.html?remixId=${getAll[i].id }">
              
              <img src="../img/albumPicture.png" alt="picture of album" class="trending__list-item-image">
              <p class="trending__list-item-title">${getAll[i].name}</p>

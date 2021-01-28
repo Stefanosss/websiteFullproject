@@ -41,6 +41,7 @@ remixRouter.route("/saveUpload").post((req, res) => {
   })
   .then(function (doc) {
     console.log(doc)
+    res.send(doc)
   })
   .catch(function (error) {
     console.error("Error adding document: ", error);

@@ -1,6 +1,6 @@
 async function getComments(id) {
     let response = await fetch(
-      "https://fullproject-backend.herokuapp.com/comment/"+id,
+      "https://fullproject-backend.herokuapp.com/comment/getAllById?id="+id,
       { mode: "cors" }
     );
     return await response.json();

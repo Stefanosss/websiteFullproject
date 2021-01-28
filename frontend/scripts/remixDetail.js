@@ -3,13 +3,11 @@ async function getComments(id) {
       "https://fullproject-backend.herokuapp.com/comment/getAllById?id="+id,
       { mode: "cors" }
     ) 
-    .then(response=> response.json())
-    .then(myJson=> console.log(myJson)
-    
-    )
     return await response.json();
+
   }
 
+  /*
   async function getUserInfo(id) {
     let response = await fetch(
       "https://fullproject-backend.herokuapp.com/authentication/getById/"+id,
@@ -18,14 +16,12 @@ async function getComments(id) {
     return await response.json();
   }
 
-
+*/
 
   window.onload = () => {
-
   console.log("href " + window.location.search);
   var url = window.location.search;
   url = url.replace("?remixId=", "");
-  console.log(url);
 
   async function detailRun(url) {
     const [comments] = await Promise.all([
@@ -34,7 +30,6 @@ async function getComments(id) {
     ]);
 
     for (let i = 0; i < comments.length; i++) 
-           console.log(comments[i].date)
         $(".comments").append(`
         <div class="comments__list">
         <img src="../img/userPicture.jpg" alt="user picture" class="comments__list-image">

@@ -29,16 +29,13 @@ async function getComments(id) {
 
     ]);
 
-    for (let i = 0; i < 7; i++) {
-
-       var data= await getUserInfo(comments[i].userId)
-        
+    for (let i = 0; i < 7; i++) 
 
         $(".comments").append(`
         <div class="comments__list">
         <img src="../img/userPicture.jpg" alt="user picture" class="comments__list-image">
         <div class="comments__list-info">
-            <p class="comments__list-info-name">${data.firstname}</p>
+            <p class="comments__list-info-name">${comments[i].userId}</p>
             <p class="comments__list-info-comment">${comments[i].comment}</p>
         </div>
         <p class="comments__list-date">${comments[i].date}</p>
